@@ -1,34 +1,49 @@
 const express = require('express')
 const router = express.Router()
+const productModel = require('../models/productModel')
+// RESTAPI ROUTES
+// get /products
+// get /products/1
+// post /products
+// put /products/1
+// delete /products/1
 
 router.get('/products', (req, res) => {
-  const data = [
-    {
-      name: 'baju',
-      price: 1000
-    },
-    {
-      name: 'baju',
-      price: 1000
-    }
-  ]
-  return res.json(data)
+  productModel.get((products) => {
+    return res.json(products)
+  })
 })
 
 router.get('/products/:id', (req, res) => {
-  return res.json({
-    name: 'baju',
-    price: 1000
+  productModel.getSingle(req.params.id, (products) => {
+    return res.json(products[0])
   })
 })
 
 router.post('/products', (req, res) => {
-  // create the data
+  productModel.create(req.body, (data) => {
+    return res.json({
+      message: 'Created success'
+    })
+  })
+})
+
+router.put('/products/:id', (req, res) => {
+  // update
   return res.json({
-    message: 'success created',
+    message: 'success updated',
     product: {
 
     }
   })
 })
+
+router.delete('/products/:id', (req, res) => {
+  return res.json({
+    message: 'success deleted',
+  })
+})
 module.exports = router
+
+// ASYNCRONOUS
+// SYNCRONOUS
