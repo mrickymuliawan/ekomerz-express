@@ -1,0 +1,46 @@
+<%- include('../template/head') %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2>Products</h2>
+        <button class="btn btn-black">Create Product</button>
+        <hr>
+        <table class="table table-striped">
+          <tr>
+            <th>No.</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Action</th>
+          </tr>
+
+          <% products.forEach(function(item) { %>
+            <tr>
+              <td>
+                <%= item.id %>
+              </td>
+              <td>
+                <%= item.name %>
+              </td>
+              <td>
+                <%= item.price %>
+              </td>
+              <td>
+                <%= item.stock %>
+              </td>
+              <td>
+                <button class="btn btn-success">Edit</button>
+                <button class="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+            <% }) %>
+
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+  <%- include('../template/foot') %>
