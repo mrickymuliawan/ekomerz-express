@@ -23,7 +23,7 @@ const getSingle = (id, cb) => {
 }
 
 const create = (body, cb) => {
-  const sql = `insert into products (name, base_price, price, description) values ('${body.name}', ${body.base_price}, ${body.price}, '${body.description}')`
+  const sql = `insert into products (name, base_price, price, description, stock) values ('${body.name}', ${body.base_price}, ${body.price}, '${body.description}', ${body.stock})`
 
   db.query(sql, (err, result) => {
     cb(result)
